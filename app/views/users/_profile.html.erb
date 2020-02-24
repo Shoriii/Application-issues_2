@@ -3,15 +3,31 @@
 
 		<tr>
 			<th>name</th>
-			<th><%= current_user.name %></th>
+			<th><%= user.name %></th>
 		</tr>
 
 		<tr>
 			<th>introduction</th>
-			<th><%= current_user.introduction %></th>
+			<th><%= user.introduction %></th>
+		</tr>
+		<tr>
+
+			<th>follows</th>
+			<th>
+             <%= link_to user.followings.count,following_user_path(user) %>
+			</th>
+		</tr>
+		<tr>
+
+			<th>followers</th>
+			<th><%= link_to user.followers.count, followers_user_path(user)%></th>
 		</tr>
 </table>
 
 <div class="row">
-	<%= link_to '',edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+	<% if @user.id == current_user.id %>
+	<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+	<% else %>
+	<%= render 'follow_form', user: user %>
+	<% end %>
 </div>
