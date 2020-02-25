@@ -1,0 +1,35 @@
+<div class="container">
+
+	<h2>Searches</h2>
+		<% if @model == 'user' %>
+		  <table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @datas.each do |data| %>
+					<tr>
+						<td><%=link_to data.name, user_path(@usr.id)%></td>
+					</tr>
+			        <% end %>
+			    </tbody>
+		   </table>
+		<% elsif @model == 'book' %>
+		   <table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @datas.each do |data| %>
+					<tr>
+						<td><%= data.title%></td>
+					</tr>
+			        <% end %>
+			    </tbody>
+		   </table>
+		<% end %>
+</div>
